@@ -50,8 +50,11 @@ public class Connect4MainActivity extends AppCompatActivity {
             cells[0][row_landed].setBackgroundResource(R.drawable.c4_blackcell);
 
         if (board.checkForWin())
-            recreate();
-        board.changePlayerTurn();
+            endGame(board.whoseTurn());
+        else if (board.drawGame())
+            endGame(0);
+        else
+            board.changePlayerTurn();
     }
     public void dropCOL1(View view)
     {
@@ -65,8 +68,11 @@ public class Connect4MainActivity extends AppCompatActivity {
             cells[1][row_landed].setBackgroundResource(R.drawable.c4_blackcell);
 
         if (board.checkForWin())
-            recreate();
-        board.changePlayerTurn();
+            endGame(board.whoseTurn());
+        else if (board.drawGame())
+            endGame(0);
+        else
+            board.changePlayerTurn();
     }
     public void dropCOL2(View view)
     {
@@ -80,8 +86,11 @@ public class Connect4MainActivity extends AppCompatActivity {
             cells[2][row_landed].setBackgroundResource(R.drawable.c4_blackcell);
 
         if (board.checkForWin())
-            recreate();
-        board.changePlayerTurn();
+            endGame(board.whoseTurn());
+        else if (board.drawGame())
+            endGame(0);
+        else
+            board.changePlayerTurn();
     }
     public void dropCOL3(View view)
     {
@@ -95,8 +104,11 @@ public class Connect4MainActivity extends AppCompatActivity {
             cells[3][row_landed].setBackgroundResource(R.drawable.c4_blackcell);
 
         if (board.checkForWin())
-            recreate();
-        board.changePlayerTurn();
+            endGame(board.whoseTurn());
+        else if (board.drawGame())
+            endGame(0);
+        else
+            board.changePlayerTurn();
     }
     public void dropCOL4(View view)
     {
@@ -110,8 +122,11 @@ public class Connect4MainActivity extends AppCompatActivity {
             cells[4][row_landed].setBackgroundResource(R.drawable.c4_blackcell);
 
         if (board.checkForWin())
-            recreate();
-        board.changePlayerTurn();
+            endGame(board.whoseTurn());
+        else if (board.drawGame())
+            endGame(0);
+        else
+            board.changePlayerTurn();
     }
     public void dropCOL5(View view)
     {
@@ -125,8 +140,11 @@ public class Connect4MainActivity extends AppCompatActivity {
             cells[5][row_landed].setBackgroundResource(R.drawable.c4_blackcell);
 
         if (board.checkForWin())
-            recreate();
-        board.changePlayerTurn();
+            endGame(board.whoseTurn());
+        else if (board.drawGame())
+            endGame(0);
+        else
+            board.changePlayerTurn();
     }
     public void dropCOL6(View view)
     {
@@ -140,10 +158,24 @@ public class Connect4MainActivity extends AppCompatActivity {
             cells[6][row_landed].setBackgroundResource(R.drawable.c4_blackcell);
 
         if (board.checkForWin())
-            recreate();
-        board.changePlayerTurn();
+            endGame(board.whoseTurn());
+        else if (board.drawGame())
+            endGame(0);
+        else
+            board.changePlayerTurn();
     }
 
+    /**
+     * End the game and display a message who won or if
+     * it ended in a draw.
+     *
+     * @param whowon    (0 == draw; neither player)
+     *                  RED or BLACK int value
+     */
+    public void endGame(int whowon)
+    {
+        recreate();
+    }
     /**
      * Incredibly ugly way to initialize button array
      */

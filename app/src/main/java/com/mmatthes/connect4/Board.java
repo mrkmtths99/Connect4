@@ -6,6 +6,7 @@ public class Board
     private final int RED = 1;
     private final int BLACK = 2;
     private int player_turn;
+    private int total_moves;
 
     /**
      * New board initializer.
@@ -14,6 +15,7 @@ public class Board
     {
         current_board = new int[7][6];
         player_turn = RED;
+        total_moves = 0;
     }
 
     /**
@@ -51,6 +53,7 @@ public class Board
             if (current_board[column_dropped][row] == 0)
             {
                 current_board[column_dropped][row] = player_turn;
+                total_moves++;
                 row_landed = row;
                 break;
             }
@@ -159,5 +162,13 @@ public class Board
         }
 
         return false;
+    }
+
+    /**
+     * @return  true if there are no more empty cells
+     */
+    public boolean drawGame()
+    {
+        return (total_moves >= 42);
     }
 }
