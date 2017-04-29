@@ -51,6 +51,11 @@ public class Connect4MainActivity extends AppCompatActivity {
                         cells[c][r].setBackgroundResource(R.drawable.c4_blackcell);
                 }
             }
+
+            if (board.checkForWin())
+                endGame(board.whoseTurn());
+            else if (board.drawGame())
+                endGame(0);
         }
         else
             board = new Board();
@@ -95,6 +100,11 @@ public class Connect4MainActivity extends AppCompatActivity {
                         cells[c][r].setBackgroundResource(R.drawable.c4_blackcell);
                 }
             }
+
+            if (board.checkForWin())
+                endGame(board.whoseTurn());
+            else if (board.drawGame())
+                endGame(0);
         }
     }
 
@@ -208,6 +218,8 @@ public class Connect4MainActivity extends AppCompatActivity {
     {
         AlertDialog alertDialog = new AlertDialog.Builder(Connect4MainActivity.this).create();
         alertDialog.setTitle("Game Over!");
+        alertDialog.setCancelable(false);
+        alertDialog.setCanceledOnTouchOutside(false);
         switch (whowon)
         {
             case 0: alertDialog.setMessage("Draw!"); break;
