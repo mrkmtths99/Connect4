@@ -1,10 +1,13 @@
 package com.mmatthes.connect4;
 
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class Connect4MainActivity extends AppCompatActivity {
 
@@ -141,7 +144,23 @@ public class Connect4MainActivity extends AppCompatActivity {
      */
     public void endGame(int whowon)
     {
-        recreate();
+        AlertDialog alertDialog = new AlertDialog.Builder(Connect4MainActivity.this).create();
+        alertDialog.setTitle("Game Over!");
+        switch (whowon)
+        {
+            case 0: alertDialog.setMessage("Draw!"); break;
+            case RED: alertDialog.setMessage("RED wins!"); break;
+            case BLACK: alertDialog.setMessage("BLACK wins!"); break;
+        }
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Restart",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        Toast.makeText(getApplicationContext(), "Restarting game...", Toast.LENGTH_SHORT).show();
+                        recreate();
+                    }
+                });
+        alertDialog.show();
     }
     /**
      * Incredibly ugly way to initialize button array
