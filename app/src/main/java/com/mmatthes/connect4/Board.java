@@ -197,6 +197,9 @@ public class Board
      */
     public int getTotal_moves(){return total_moves;}
 
+    /**
+     * Reset the game data back to default values.
+     */
     public void clearBoardData()
     {
         player_turn = RED;
