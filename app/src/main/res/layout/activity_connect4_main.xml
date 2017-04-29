@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_connect4_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.mmatthes.connect4.Connect4MainActivity">
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:stretchColumns="7"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TableRow
+            android:id="@+id/tableRow5"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+            <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_05" android:onClick="dropCOL0"/>
+
+            <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_15" android:onClick="dropCOL1"/>
+
+            <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_25" android:onClick="dropCOL2"/>
+
+            <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_35" android:onClick="dropCOL3"/>
+            <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_45" android:onClick="dropCOL4"/>
+
+            <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_55" android:onClick="dropCOL5"/>
+
+            <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_65" android:onClick="dropCOL6"/>
+
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow4"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+
+            <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_04" android:onClick="dropCOL0"/>
+            <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_14" android:onClick="dropCOL1"/>
+            <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_24" android:onClick="dropCOL2"/>
+
+            <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_34" android:onClick="dropCOL3"/>
+
+            <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_44" android:onClick="dropCOL4"/>
+            <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_54" android:onClick="dropCOL5"/>
+            <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_64" android:onClick="dropCOL6"/>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+
+            <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_03" android:onClick="dropCOL0"/>
+
+            <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_13" android:onClick="dropCOL1"/>
+
+            <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_23" android:onClick="dropCOL2"/>
+
+            <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_33" android:onClick="dropCOL3"/>
+
+            <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_43" android:onClick="dropCOL4"/>
+
+            <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_53" android:onClick="dropCOL5"/>
+            <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_63" android:onClick="dropCOL6"/>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+            <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_02" android:onClick="dropCOL0"/>
+            <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_12" android:onClick="dropCOL1"/>
+            <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_22" android:onClick="dropCOL2"/>
+            <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_32" android:onClick="dropCOL3"/>
+            <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_42" android:onClick="dropCOL4"/>
+
+            <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_52" android:onClick="dropCOL5"/>
+
+            <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_62" android:onClick="dropCOL6"/>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+
+            <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_01" android:onClick="dropCOL0"/>
+            <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_11" android:onClick="dropCOL1"/>
+            <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_21" android:onClick="dropCOL2"/>
+
+            <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_31" android:onClick="dropCOL3"/>
+
+            <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_41" android:onClick="dropCOL4"/>
+            <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_51" android:onClick="dropCOL5"/>
+            <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_61" android:onClick="dropCOL6"/>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+
+            <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_00" android:onClick="dropCOL0"/>
+            <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_10" android:onClick="dropCOL1"/>
+            <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_20" android:onClick="dropCOL2"/>
+            <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_30" android:onClick="dropCOL3"/>
+            <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_40" android:onClick="dropCOL4"/>
+
+            <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_50" android:onClick="dropCOL5"/>
+
+            <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_60" android:onClick="dropCOL6"/>
+        </TableRow>
+
+    </TableLayout>
+</RelativeLayout>
