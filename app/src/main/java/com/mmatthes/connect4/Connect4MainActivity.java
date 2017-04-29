@@ -23,18 +23,80 @@ public class Connect4MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_connect4_main);
 
-        board = new Board();
         cells = new Button[7][6];
         initializeButtons();
         turnIndicator = (ImageView) findViewById(R.id.turnImageView);
         row_landed = -1;
+
+        if (savedInstanceState != null)
+        {
+            int[][] restore_board_data = (int[][])savedInstanceState.getSerializable("SAVED_BOARD");
+            int restore_total_moves = savedInstanceState.getInt("TOTAL_MOVES");
+            int restore_player_turn = savedInstanceState.getInt("PLAYER_TURN");
+
+            board = new Board(restore_board_data,restore_player_turn,restore_total_moves);
+
+            if (board.whoseTurn() == RED)
+                turnIndicator.setImageResource(R.drawable.c4_blackturn);
+            else if (board.whoseTurn() == BLACK)
+                turnIndicator.setImageResource(R.drawable.c4_redturn);
+
+            for (int r = 0; r <= 5; r++)
+            {
+                for (int c = 0; c <= 6; c++)
+                {
+                    if (restore_board_data[c][r] == RED)
+                        cells[c][r].setBackgroundResource(R.drawable.c4_redcell);
+                    else if (restore_board_data[c][r] == BLACK)
+                        cells[c][r].setBackgroundResource(R.drawable.c4_blackcell);
+                }
+            }
+        }
+        else
+            board = new Board();
     }
 
-//    public void changeBackground(View view)
-//    {
-//        Button button = (Button) findViewById(R.id.btn);
-//        button.setBackgroundResource(R.drawable.c4_redcell);
-//    }
+    @Override
+    protected void onSaveInstanceState(Bundle savedInstanceState)
+    {
+        int[][] save_board_data = board.getCurrent_board();
+        int save_total_moves = board.getTotal_moves();
+        int save_player_turn = board.whoseTurn();
+
+        savedInstanceState.putSerializable("SAVED_BOARD",save_board_data);
+        savedInstanceState.putInt("TOTAL_MOVES",save_total_moves);
+        savedInstanceState.putInt("PLAYER_TURN",save_player_turn);
+        super.onSaveInstanceState(savedInstanceState);
+    }
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState)
+    {
+        super.onRestoreInstanceState(savedInstanceState);
+        if (savedInstanceState != null)
+        {
+            int[][] restore_board_data = (int[][])savedInstanceState.getSerializable("SAVED_BOARD");
+            int restore_total_moves = savedInstanceState.getInt("TOTAL_MOVES");
+            int restore_player_turn = savedInstanceState.getInt("PLAYER_TURN");
+
+            board = new Board(restore_board_data,restore_player_turn,restore_total_moves);
+
+            if (board.whoseTurn() == RED)
+                turnIndicator.setImageResource(R.drawable.c4_blackturn);
+            else if (board.whoseTurn() == BLACK)
+                turnIndicator.setImageResource(R.drawable.c4_redturn);
+
+            for (int r = 0; r <= 5; r++)
+            {
+                for (int c = 0; c <= 6; c++)
+                {
+                    if (restore_board_data[c][r] == RED)
+                        cells[c][r].setBackgroundResource(R.drawable.c4_redcell);
+                    else if (restore_board_data[c][r] == BLACK)
+                        cells[c][r].setBackgroundResource(R.drawable.c4_blackcell);
+                }
+            }
+        }
+    }
 
     /**
      * Figure out which row in column # is available, and
@@ -157,6 +219,7 @@ public class Connect4MainActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
                         Toast.makeText(getApplicationContext(), "Restarting game...", Toast.LENGTH_SHORT).show();
+                        board.clearBoardData();
                         recreate();
                     }
                 });

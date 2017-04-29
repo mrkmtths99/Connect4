@@ -19,6 +19,26 @@ public class Board
     }
 
     /**
+     * Previously saved board initializer.
+     */
+    public Board(int[][] saved_grid, int turn, int moves)
+    {
+        current_board = new int[7][6];
+        for (int i = 0; i < saved_grid.length; i++)
+            current_board[i] = saved_grid[i].clone();
+        player_turn = turn;
+        total_moves = moves;
+    }
+
+    public int[][] getCurrent_board()
+    {
+        int [][] copyofboard = new int[current_board.length][];
+        for (int i = 0; i < current_board.length; i++)
+            copyofboard[i] = current_board[i].clone();
+        return copyofboard;
+    }
+
+    /**
      * Change to the next player's turn
      */
     public void changePlayerTurn()
@@ -170,5 +190,19 @@ public class Board
     public boolean drawGame()
     {
         return (total_moves >= 42);
+    }
+
+    /**
+     * @return  total number of moves
+     */
+    public int getTotal_moves(){return total_moves;}
+
+    public void clearBoardData()
+    {
+        player_turn = RED;
+        total_moves = 0;
+        int[][] clear_board = new int[7][6];
+        for (int i = 0; i < clear_board.length; i++)
+            current_board[i] = clear_board[i].clone();
     }
 }
