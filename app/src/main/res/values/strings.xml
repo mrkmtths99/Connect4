@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Connect4</string>
+    <string name="turnLabel">Player Turn: </string>
 </resources>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_connect4_main"
     android:layout_width="match_parent"
@@ -16,7 +17,8 @@
         android:stretchColumns="7"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:id="@+id/tableLayout">
 
         <TableRow
             android:id="@+id/tableRow5"
@@ -133,4 +135,25 @@
         </TableRow>
 
     </TableLayout>
+
+    <TextView
+        android:text="@string/turnLabel"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tableLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/turnTextView" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        app:srcCompat="@drawable/c4_redturn"
+        android:layout_alignTop="@+id/turnTextView"
+        android:layout_toRightOf="@+id/turnTextView"
+        android:layout_toEndOf="@+id/turnTextView"
+        android:id="@+id/turnImageView" />
 </RelativeLayout>

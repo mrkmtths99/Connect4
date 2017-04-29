@@ -4,14 +4,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 public class Connect4MainActivity extends AppCompatActivity {
 
     private final int RED = 1;
     private final int BLACK = 2;
-    Board board;
-    Button[][] cells;
+    private Board board;
+    private Button[][] cells;
     private int row_landed;
+    private ImageView turnIndicator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +23,7 @@ public class Connect4MainActivity extends AppCompatActivity {
         board = new Board();
         cells = new Button[7][6];
         initializeButtons();
+        turnIndicator = (ImageView) findViewById(R.id.turnImageView);
         row_landed = -1;
     }
 
@@ -43,126 +46,90 @@ public class Connect4MainActivity extends AppCompatActivity {
         row_landed = board.dropPiece(0);
         if (row_landed == -1)
             return;
-
-        if (board.whoseTurn() == RED)
-            cells[0][row_landed].setBackgroundResource(R.drawable.c4_redcell);
-        else if(board.whoseTurn() == BLACK)
-            cells[0][row_landed].setBackgroundResource(R.drawable.c4_blackcell);
-
-        if (board.checkForWin())
-            endGame(board.whoseTurn());
-        else if (board.drawGame())
-            endGame(0);
-        else
-            board.changePlayerTurn();
+        fillCell(0);
+        endTurn();
     }
     public void dropCOL1(View view)
     {
         row_landed = board.dropPiece(1);
         if (row_landed == -1)
             return;
-
-        if (board.whoseTurn() == RED)
-            cells[1][row_landed].setBackgroundResource(R.drawable.c4_redcell);
-        else if(board.whoseTurn() == BLACK)
-            cells[1][row_landed].setBackgroundResource(R.drawable.c4_blackcell);
-
-        if (board.checkForWin())
-            endGame(board.whoseTurn());
-        else if (board.drawGame())
-            endGame(0);
-        else
-            board.changePlayerTurn();
+        fillCell(1);
+        endTurn();
     }
     public void dropCOL2(View view)
     {
         row_landed = board.dropPiece(2);
         if (row_landed == -1)
             return;
-
-        if (board.whoseTurn() == RED)
-            cells[2][row_landed].setBackgroundResource(R.drawable.c4_redcell);
-        else if(board.whoseTurn() == BLACK)
-            cells[2][row_landed].setBackgroundResource(R.drawable.c4_blackcell);
-
-        if (board.checkForWin())
-            endGame(board.whoseTurn());
-        else if (board.drawGame())
-            endGame(0);
-        else
-            board.changePlayerTurn();
+        fillCell(2);
+        endTurn();
     }
     public void dropCOL3(View view)
     {
         row_landed = board.dropPiece(3);
         if (row_landed == -1)
             return;
-
-        if (board.whoseTurn() == RED)
-            cells[3][row_landed].setBackgroundResource(R.drawable.c4_redcell);
-        else if(board.whoseTurn() == BLACK)
-            cells[3][row_landed].setBackgroundResource(R.drawable.c4_blackcell);
-
-        if (board.checkForWin())
-            endGame(board.whoseTurn());
-        else if (board.drawGame())
-            endGame(0);
-        else
-            board.changePlayerTurn();
+        fillCell(3);
+        endTurn();
     }
     public void dropCOL4(View view)
     {
         row_landed = board.dropPiece(4);
         if (row_landed == -1)
             return;
-
-        if (board.whoseTurn() == RED)
-            cells[4][row_landed].setBackgroundResource(R.drawable.c4_redcell);
-        else if(board.whoseTurn() == BLACK)
-            cells[4][row_landed].setBackgroundResource(R.drawable.c4_blackcell);
-
-        if (board.checkForWin())
-            endGame(board.whoseTurn());
-        else if (board.drawGame())
-            endGame(0);
-        else
-            board.changePlayerTurn();
+        fillCell(4);
+        endTurn();
     }
     public void dropCOL5(View view)
     {
         row_landed = board.dropPiece(5);
         if (row_landed == -1)
             return;
-
-        if (board.whoseTurn() == RED)
-            cells[5][row_landed].setBackgroundResource(R.drawable.c4_redcell);
-        else if(board.whoseTurn() == BLACK)
-            cells[5][row_landed].setBackgroundResource(R.drawable.c4_blackcell);
-
-        if (board.checkForWin())
-            endGame(board.whoseTurn());
-        else if (board.drawGame())
-            endGame(0);
-        else
-            board.changePlayerTurn();
+        fillCell(5);
+        endTurn();
     }
     public void dropCOL6(View view)
     {
         row_landed = board.dropPiece(6);
         if (row_landed == -1)
             return;
+        fillCell(6);
+        endTurn();
+    }
 
+    /**
+     * Change the background resource of the corresponding piece
+     * that was just dropped.
+     *
+     * @param col   column dropped
+     */
+    public void fillCell(int col)
+    {
         if (board.whoseTurn() == RED)
-            cells[6][row_landed].setBackgroundResource(R.drawable.c4_redcell);
+            cells[col][row_landed].setBackgroundResource(R.drawable.c4_redcell);
         else if(board.whoseTurn() == BLACK)
-            cells[6][row_landed].setBackgroundResource(R.drawable.c4_blackcell);
+            cells[col][row_landed].setBackgroundResource(R.drawable.c4_blackcell);
+    }
 
+    /**
+     * Check for a winner or draw game.
+     * Else change the player's turn.
+     */
+    public void endTurn()
+    {
         if (board.checkForWin())
             endGame(board.whoseTurn());
         else if (board.drawGame())
             endGame(0);
         else
+        {
+            if (board.whoseTurn() == RED)
+                turnIndicator.setImageResource(R.drawable.c4_blackturn);
+            else if (board.whoseTurn() == BLACK)
+                turnIndicator.setImageResource(R.drawable.c4_redturn);
             board.changePlayerTurn();
+        }
     }
 
     /**
