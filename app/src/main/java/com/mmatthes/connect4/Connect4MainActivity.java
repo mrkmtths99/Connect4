@@ -37,9 +37,9 @@ public class Connect4MainActivity extends AppCompatActivity {
             board = new Board(restore_board_data,restore_player_turn,restore_total_moves);
 
             if (board.whoseTurn() == RED)
-                turnIndicator.setImageResource(R.drawable.c4_blackturn);
-            else if (board.whoseTurn() == BLACK)
                 turnIndicator.setImageResource(R.drawable.c4_redturn);
+            else if (board.whoseTurn() == BLACK)
+                turnIndicator.setImageResource(R.drawable.c4_blackturn);
 
             for (int r = 0; r <= 5; r++)
             {
@@ -86,9 +86,9 @@ public class Connect4MainActivity extends AppCompatActivity {
             board = new Board(restore_board_data,restore_player_turn,restore_total_moves);
 
             if (board.whoseTurn() == RED)
-                turnIndicator.setImageResource(R.drawable.c4_blackturn);
-            else if (board.whoseTurn() == BLACK)
                 turnIndicator.setImageResource(R.drawable.c4_redturn);
+            else if (board.whoseTurn() == BLACK)
+                turnIndicator.setImageResource(R.drawable.c4_blackturn);
 
             for (int r = 0; r <= 5; r++)
             {
@@ -173,6 +173,11 @@ public class Connect4MainActivity extends AppCompatActivity {
         endTurn();
     }
 
+    public void restartGame(View view)
+    {
+        board.clearBoardData();
+        recreate();
+    }
     /**
      * Change the background resource of the corresponding piece
      * that was just dropped.

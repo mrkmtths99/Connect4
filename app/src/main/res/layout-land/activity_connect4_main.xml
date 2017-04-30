@@ -14,7 +14,7 @@
     <TableLayout
         android:layout_width="340dp"
         android:layout_height="300dp"
-        android:stretchColumns="7"
+        android:stretchColumns="*"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:id="@+id/tableLayout">
@@ -26,16 +26,11 @@
             android:orientation="horizontal"
             android:layout_weight="1">
             <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_05" android:onClick="dropCOL0"/>
-
             <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_15" android:onClick="dropCOL1"/>
-
             <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_25" android:onClick="dropCOL2"/>
-
             <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_35" android:onClick="dropCOL3"/>
             <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_45" android:onClick="dropCOL4"/>
-
             <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_55" android:onClick="dropCOL5"/>
-
             <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_65" android:onClick="dropCOL6"/>
 
 
@@ -51,9 +46,7 @@
             <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_04" android:onClick="dropCOL0"/>
             <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_14" android:onClick="dropCOL1"/>
             <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_24" android:onClick="dropCOL2"/>
-
             <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_34" android:onClick="dropCOL3"/>
-
             <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_44" android:onClick="dropCOL4"/>
             <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_54" android:onClick="dropCOL5"/>
             <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_64" android:onClick="dropCOL6"/>
@@ -67,15 +60,10 @@
             android:layout_weight="1">
 
             <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_03" android:onClick="dropCOL0"/>
-
             <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_13" android:onClick="dropCOL1"/>
-
             <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_23" android:onClick="dropCOL2"/>
-
             <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_33" android:onClick="dropCOL3"/>
-
             <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_43" android:onClick="dropCOL4"/>
-
             <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_53" android:onClick="dropCOL5"/>
             <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_63" android:onClick="dropCOL6"/>
         </TableRow>
@@ -91,9 +79,7 @@
             <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_22" android:onClick="dropCOL2"/>
             <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_32" android:onClick="dropCOL3"/>
             <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_42" android:onClick="dropCOL4"/>
-
             <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_52" android:onClick="dropCOL5"/>
-
             <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_62" android:onClick="dropCOL6"/>
         </TableRow>
 
@@ -107,9 +93,7 @@
             <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_01" android:onClick="dropCOL0"/>
             <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_11" android:onClick="dropCOL1"/>
             <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_21" android:onClick="dropCOL2"/>
-
             <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_31" android:onClick="dropCOL3"/>
-
             <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_41" android:onClick="dropCOL4"/>
             <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_51" android:onClick="dropCOL5"/>
             <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_61" android:onClick="dropCOL6"/>
@@ -127,9 +111,7 @@
             <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_20" android:onClick="dropCOL2"/>
             <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_30" android:onClick="dropCOL3"/>
             <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_40" android:onClick="dropCOL4"/>
-
             <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_50" android:onClick="dropCOL5"/>
-
             <Button android:background="@drawable/c4_emptycell" android:layout_weight="1" android:id="@+id/cell_60" android:onClick="dropCOL6"/>
         </TableRow>
 
@@ -154,4 +136,27 @@
         android:layout_toRightOf="@+id/turnTextView"
         android:layout_toEndOf="@+id/turnTextView"
         android:id="@+id/turnImageView" />
+
+    <Button
+        android:text="@string/restartBtnLabel"
+        android:onClick="restartGame"
+        android:layout_width="wrap_content"
+        android:layout_height="75dp"
+        android:layout_below="@+id/turnImageView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@id/turnImageView"
+        android:layout_marginTop="30dp"
+        android:id="@+id/restartButton" />
+
+    <Button
+        android:text="@string/mainMenuBtnLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="75dp"
+        android:layout_below="@+id/restartButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@id/restartButton"
+        android:layout_marginTop="15dp"
+        android:id="@+id/mainMenuButton" />
 </RelativeLayout>
