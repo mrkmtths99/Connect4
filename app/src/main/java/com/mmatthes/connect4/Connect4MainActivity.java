@@ -1,6 +1,7 @@
 package com.mmatthes.connect4;
 
 import android.content.DialogInterface;
+import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
+import java.util.Random;
 
 public class Connect4MainActivity extends AppCompatActivity {
 
@@ -17,6 +19,9 @@ public class Connect4MainActivity extends AppCompatActivity {
     private Button[][] cells;
     private int row_landed;
     private ImageView turnIndicator;
+    private boolean vscomputer;
+    private Random random;
+    private final Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +32,8 @@ public class Connect4MainActivity extends AppCompatActivity {
         initializeButtons();
         turnIndicator = (ImageView) findViewById(R.id.turnImageView);
         row_landed = -1;
+        random = new Random();
+        vscomputer = true;
 
         if (savedInstanceState != null)
         {
@@ -122,7 +129,11 @@ public class Connect4MainActivity extends AppCompatActivity {
         if (row_landed == -1)
             return;
         fillCell(0);
-        endTurn();
+        if (endTurn())
+            return;
+
+        if (vscomputer)
+            computerTurn();
     }
     public void dropCOL1(View view)
     {
@@ -130,7 +141,11 @@ public class Connect4MainActivity extends AppCompatActivity {
         if (row_landed == -1)
             return;
         fillCell(1);
-        endTurn();
+        if (endTurn())
+            return;
+
+        if (vscomputer)
+            computerTurn();
     }
     public void dropCOL2(View view)
     {
@@ -138,7 +153,11 @@ public class Connect4MainActivity extends AppCompatActivity {
         if (row_landed == -1)
             return;
         fillCell(2);
-        endTurn();
+        if (endTurn())
+            return;
+
+        if (vscomputer)
+            computerTurn();
     }
     public void dropCOL3(View view)
     {
@@ -146,7 +165,11 @@ public class Connect4MainActivity extends AppCompatActivity {
         if (row_landed == -1)
             return;
         fillCell(3);
-        endTurn();
+        if (endTurn())
+            return;
+
+        if (vscomputer)
+            computerTurn();
     }
     public void dropCOL4(View view)
     {
@@ -154,7 +177,11 @@ public class Connect4MainActivity extends AppCompatActivity {
         if (row_landed == -1)
             return;
         fillCell(4);
-        endTurn();
+        if (endTurn())
+            return;
+
+        if (vscomputer)
+            computerTurn();
     }
     public void dropCOL5(View view)
     {
@@ -162,7 +189,11 @@ public class Connect4MainActivity extends AppCompatActivity {
         if (row_landed == -1)
             return;
         fillCell(5);
-        endTurn();
+        if (endTurn())
+            return;
+
+        if (vscomputer)
+            computerTurn();
     }
     public void dropCOL6(View view)
     {
@@ -170,9 +201,43 @@ public class Connect4MainActivity extends AppCompatActivity {
         if (row_landed == -1)
             return;
         fillCell(6);
-        endTurn();
+        if (endTurn())
+            return;
+
+        if (vscomputer)
+            computerTurn();
     }
 
+    /**
+     * Playing against computer turn.
+     */
+    public void computerTurn()
+    {
+        disableButtons();
+
+        handler.postDelayed(new Runnable()
+        {
+            @Override
+            public void run() {
+
+                int randInt = random.nextInt((6) + 1);
+                do
+                {
+                    row_landed = board.dropPiece(randInt);
+                } while(row_landed == -1);
+                fillCell(randInt);
+                endTurn();
+
+                enableButtons();
+            }
+        }, 1000);
+    }
+
+    /**
+     * Clear the game data and recreate.
+     *
+     * @param view
+     */
     public void restartGame(View view)
     {
         board.clearBoardData();
@@ -196,12 +261,18 @@ public class Connect4MainActivity extends AppCompatActivity {
      * Check for a winner or draw game.
      * Else change the player's turn.
      */
-    public void endTurn()
+    public boolean endTurn()
     {
         if (board.checkForWin())
+        {
             endGame(board.whoseTurn());
+            return true;
+        }
         else if (board.drawGame())
+        {
             endGame(0);
+            return true;
+        }
         else
         {
             if (board.whoseTurn() == RED)
@@ -209,6 +280,7 @@ public class Connect4MainActivity extends AppCompatActivity {
             else if (board.whoseTurn() == BLACK)
                 turnIndicator.setImageResource(R.drawable.c4_redturn);
             board.changePlayerTurn();
+            return false;
         }
     }
 
@@ -234,13 +306,39 @@ public class Connect4MainActivity extends AppCompatActivity {
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Restart",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
                         Toast.makeText(getApplicationContext(), "Restarting game...", Toast.LENGTH_SHORT).show();
                         board.clearBoardData();
+                        dialog.dismiss();
                         recreate();
                     }
                 });
         alertDialog.show();
+    }
+
+    /**
+     * Disable and don't allow buttons to be clicked
+     */
+    public void disableButtons()
+    {
+        for (int r = 0; r <= 5; r++)
+            for (int c = 0; c <= 6; c++)
+            {
+                cells[c][r].setEnabled(false);
+                cells[c][r].setClickable(false);
+            }
+    }
+
+    /**
+     * Enable and allow buttons to be clicked
+     */
+    public void enableButtons()
+    {
+        for (int r = 0; r <= 5; r++)
+            for (int c = 0; c <= 6; c++)
+            {
+                cells[c][r].setEnabled(true);
+                cells[c][r].setClickable(true);
+            }
     }
     /**
      * Incredibly ugly way to initialize button array
