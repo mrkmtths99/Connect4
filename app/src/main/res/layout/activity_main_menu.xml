@@ -8,23 +8,39 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/colorLightBlue"
     tools:context="com.mmatthes.connect4.MainMenuActivity">
 
     <TextView
         android:text="@string/titleLabel"
+        android:textSize="54sp"
+        android:textStyle="bold"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="-5"
+        android:shadowDy="4"
+        android:shadowRadius="1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
         android:id="@+id/titleTextView" />
 
     <Button
         android:text="@string/newGameBtnLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:layout_width="270dp"
+        android:layout_height="100dp"
+        android:background="@drawable/buttonshape"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="3"
+        android:shadowDy="2"
+        android:shadowRadius="8"
         android:id="@+id/newGameButton"
-        android:layout_centerVertical="true"
+        android:layout_below="@id/titleTextView"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="125dp"
         android:onClick="startNewGame"/>
 
 </RelativeLayout>
