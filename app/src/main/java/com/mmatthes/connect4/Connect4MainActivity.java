@@ -21,6 +21,7 @@ public class Connect4MainActivity extends AppCompatActivity {
     private ImageView turnIndicator;
     private boolean vscomputer;
     private Random random;
+    private int randInt;
     private final Handler handler = new Handler();
 
     @Override
@@ -133,7 +134,7 @@ public class Connect4MainActivity extends AppCompatActivity {
             return;
 
         if (vscomputer)
-            computerTurn();
+            computerTurn(0);
     }
     public void dropCOL1(View view)
     {
@@ -145,7 +146,7 @@ public class Connect4MainActivity extends AppCompatActivity {
             return;
 
         if (vscomputer)
-            computerTurn();
+            computerTurn(1);
     }
     public void dropCOL2(View view)
     {
@@ -157,7 +158,7 @@ public class Connect4MainActivity extends AppCompatActivity {
             return;
 
         if (vscomputer)
-            computerTurn();
+            computerTurn(2);
     }
     public void dropCOL3(View view)
     {
@@ -169,7 +170,7 @@ public class Connect4MainActivity extends AppCompatActivity {
             return;
 
         if (vscomputer)
-            computerTurn();
+            computerTurn(3);
     }
     public void dropCOL4(View view)
     {
@@ -181,7 +182,7 @@ public class Connect4MainActivity extends AppCompatActivity {
             return;
 
         if (vscomputer)
-            computerTurn();
+            computerTurn(4);
     }
     public void dropCOL5(View view)
     {
@@ -193,7 +194,7 @@ public class Connect4MainActivity extends AppCompatActivity {
             return;
 
         if (vscomputer)
-            computerTurn();
+            computerTurn(5);
     }
     public void dropCOL6(View view)
     {
@@ -205,13 +206,13 @@ public class Connect4MainActivity extends AppCompatActivity {
             return;
 
         if (vscomputer)
-            computerTurn();
+            computerTurn(6);
     }
 
     /**
      * Playing against computer turn.
      */
-    public void computerTurn()
+    public void computerTurn(final int last_col)
     {
         disableButtons();
 
@@ -220,9 +221,13 @@ public class Connect4MainActivity extends AppCompatActivity {
             @Override
             public void run() {
 
-                int randInt = random.nextInt((6) + 1);
                 do
                 {
+                    if (!board.isColumnFull(last_col))
+                        randInt = random.nextInt((2) + 1) + last_col - 1;
+                    else
+                        randInt = random.nextInt((6)+1);
+//                    System.out.println(randInt);
                     row_landed = board.dropPiece(randInt);
                 } while(row_landed == -1);
                 fillCell(randInt);

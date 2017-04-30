@@ -68,14 +68,17 @@ public class Board
     public int dropPiece(int column_dropped)
     {
         int row_landed = -1;
-        for (int row = 0; row <= 5; row++)
+        if (column_dropped >= 0 && column_dropped <= 6)
         {
-            if (current_board[column_dropped][row] == 0)
+            for (int row = 0; row <= 5; row++)
             {
-                current_board[column_dropped][row] = player_turn;
-                total_moves++;
-                row_landed = row;
-                break;
+                if (current_board[column_dropped][row] == 0)
+                {
+                    current_board[column_dropped][row] = player_turn;
+                    total_moves++;
+                    row_landed = row;
+                    break;
+                }
             }
         }
         return row_landed;
@@ -192,6 +195,10 @@ public class Board
         return (total_moves >= 42);
     }
 
+    public boolean isColumnFull(int column)
+    {
+        return (current_board[column][5] != 0);
+    }
     /**
      * @return  total number of moves
      */
