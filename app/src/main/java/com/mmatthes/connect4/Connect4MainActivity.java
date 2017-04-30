@@ -1,6 +1,7 @@
 package com.mmatthes.connect4;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +18,7 @@ public class Connect4MainActivity extends AppCompatActivity {
     private final int BLACK = 2;
     private Board board;
     private Button[][] cells;
+    private Button mainMenuBtn;
     private int row_landed;
     private ImageView turnIndicator;
     private boolean vscomputer;
@@ -67,6 +69,17 @@ public class Connect4MainActivity extends AppCompatActivity {
         }
         else
             board = new Board();
+
+        //Main menu button used exit the current game and return to main menu
+        mainMenuBtn = (Button) findViewById(R.id.mainMenuButton);
+        mainMenuBtn.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View view)
+            {
+                board.clearBoardData();
+                finish();
+            }
+        });
     }
 
     @Override
@@ -248,6 +261,7 @@ public class Connect4MainActivity extends AppCompatActivity {
         board.clearBoardData();
         recreate();
     }
+
     /**
      * Change the background resource of the corresponding piece
      * that was just dropped.

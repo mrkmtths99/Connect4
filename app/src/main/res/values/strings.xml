@@ -3,4 +3,6 @@
     <string name="turnLabel">Player Turn: </string>
     <string name="restartBtnLabel">Restart</string>
     <string name="mainMenuBtnLabel">Main Menu</string>
+    <string name="newGameBtnLabel">New Game</string>
+    <string name="titleLabel">CONNECT 4</string>
 </resources>
